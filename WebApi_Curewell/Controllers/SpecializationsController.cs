@@ -32,5 +32,12 @@ namespace WebApi_Curewell.Controllers
             }
             return specList.ToList();
         }
+
+        [HttpPost("AddSpecializations")]
+        public async Task<ActionResult<Specialization>> PostDoctor(Specialization specialization)
+        {
+            bool res = _helper.AddSpecialization(specialization);
+            return Ok(res);
+        }
     }
 }

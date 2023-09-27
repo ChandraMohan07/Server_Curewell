@@ -25,5 +25,22 @@ namespace WebApi_Curewell.DAL
                 return null;
             }
         }
+
+        public bool AddSpecialization(Specialization spec)
+        {
+            try
+            {
+                Specialization specialzation = new Specialization();
+                specialzation.SpecializationCode = spec.SpecializationCode;
+                specialzation.SpecializationName = spec.SpecializationName;
+                context.Specializations.Add(specialzation);
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
