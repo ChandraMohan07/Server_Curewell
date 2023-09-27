@@ -1,4 +1,5 @@
-﻿using WebApi_Curewell.Models;
+﻿using System.Numerics;
+using WebApi_Curewell.Models;
 
 namespace WebApi_Curewell.DAL
 {
@@ -62,6 +63,21 @@ namespace WebApi_Curewell.DAL
                 sur.StartTime = surgery.StartTime;
                 sur.EndTime = surgery.EndTime;
                 sur.SurgeryCategory = surgery.SurgeryCategory;
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteSurgery(Surgery surgery)
+        {
+            try
+            {
+                Surgery s = context.Surgeries.SingleOrDefault(s => s.SurgeryId == surgery.SurgeryId);
+                context.Surgeries.Remove(s);
                 context.SaveChanges();
                 return true;
             }

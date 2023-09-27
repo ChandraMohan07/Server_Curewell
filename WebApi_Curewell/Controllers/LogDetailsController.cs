@@ -10,7 +10,6 @@ using WebApi_Curewell.Models;
 
 namespace WebApi_Curewell.Controllers
 {
-    [Authorize(Roles = "User")]
     [Route("api/[controller]")]
     [ApiController]
     public class LogDetailsController : ControllerBase
@@ -31,24 +30,6 @@ namespace WebApi_Curewell.Controllers
               return NotFound();
           }
             return await _context.LogDetails.ToListAsync();
-        }
-
-        // GET: api/LogDetails/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LogDetail>> GetLogDetail(string id)
-        {
-          if (_context.LogDetails == null)
-          {
-              return NotFound();
-          }
-            var logDetail = await _context.LogDetails.FindAsync(id);
-
-            if (logDetail == null)
-            {
-                return NotFound();
-            }
-
-            return logDetail;
         }
 
         // PUT: api/LogDetails/5
@@ -109,26 +90,6 @@ namespace WebApi_Curewell.Controllers
             }
 
             return CreatedAtAction("GetLogDetail", new { id = logDetail.UserName }, logDetail);
-        }
-
-        // DELETE: api/LogDetails/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLogDetail(string id)
-        {
-            if (_context.LogDetails == null)
-            {
-                return NotFound();
-            }
-            var logDetail = await _context.LogDetails.FindAsync(id);
-            if (logDetail == null)
-            {
-                return NotFound();
-            }
-
-            _context.LogDetails.Remove(logDetail);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
         private bool LogDetailExists(string id)
