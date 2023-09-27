@@ -25,6 +25,7 @@ namespace WebApi_Curewell.DAL
             }
         }
 
+        //delete doctor
         public bool DeleteDoctor(Doctor doctor)
         {
             try
