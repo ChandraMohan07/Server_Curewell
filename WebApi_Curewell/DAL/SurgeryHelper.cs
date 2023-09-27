@@ -72,11 +72,11 @@ namespace WebApi_Curewell.DAL
             }
         }
 
-        public bool DeleteSurgery(Surgery surgery)
+        public bool DeleteSurgery(int id)
         {
             try
             {
-                Surgery s = context.Surgeries.SingleOrDefault(s => s.SurgeryId == surgery.SurgeryId);
+                Surgery s = context.Surgeries.SingleOrDefault(s => s.SurgeryId == id);
                 context.Surgeries.Remove(s);
                 context.SaveChanges();
                 return true;

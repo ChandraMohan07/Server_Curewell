@@ -36,7 +36,7 @@ namespace WebApi_Curewell.Controllers
         }
 
         [HttpPost("AddSpecializations")]
-        public async Task<ActionResult<Specialization>> PostDoctor(Specialization specialization)
+        public async Task<ActionResult<Specialization>> PostSpecialization(Specialization specialization)
         {
             bool res = _helper.AddSpecialization(specialization);
             return Ok(res);

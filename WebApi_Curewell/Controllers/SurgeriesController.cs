@@ -53,10 +53,10 @@ namespace WebApi_Curewell.Controllers
             return Ok(res);
         }
 
-        [HttpDelete("DeleteSurgery")]
-        public async Task<IActionResult> DeleteSurgery(Surgery surgery)
+        [HttpDelete("DeleteSurgery/{id}")]
+        public IActionResult DeleteSurgery(int id)
         {
-            bool res = _helper.DeleteSurgery(surgery);
+            bool res = _helper.DeleteSurgery(id);
             return Ok(res);
         }
     }

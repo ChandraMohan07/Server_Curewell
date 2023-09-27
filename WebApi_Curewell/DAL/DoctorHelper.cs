@@ -1,4 +1,5 @@
-﻿using WebApi_Curewell.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApi_Curewell.Models;
 
 namespace WebApi_Curewell.DAL
 {
@@ -26,11 +27,11 @@ namespace WebApi_Curewell.DAL
         }
 
         //delete doctor
-        public bool DeleteDoctor(Doctor doctor)
+        public bool DeleteDoctor(int id)
         {
             try
             {
-                Doctor doc = context.Doctors.SingleOrDefault(d => d.DoctorId == doctor.DoctorId);
+                Doctor doc = context.Doctors.SingleOrDefault(d => d.DoctorId == id);
                 context.Doctors.Remove(doc);
                 context.SaveChanges();
                 return true;

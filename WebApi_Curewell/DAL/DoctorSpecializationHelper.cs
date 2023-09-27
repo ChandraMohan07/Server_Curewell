@@ -1,4 +1,5 @@
-﻿using WebApi_Curewell.Models;
+﻿using System.Numerics;
+using WebApi_Curewell.Models;
 
 namespace WebApi_Curewell.DAL
 {
@@ -29,5 +30,24 @@ namespace WebApi_Curewell.DAL
                 return null;
             }
         }
+
+        public bool AddSpecialization(DoctorSpecialization spec)
+        {
+            try
+            {
+                DoctorSpecialization doc = new DoctorSpecialization();
+                doc.DoctorId = spec.DoctorId;
+                doc.SpecializationCode = spec.SpecializationCode;
+                doc.SpecializationDate = spec.SpecializationDate;
+                context.DoctorSpecializations.Add(doc);
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

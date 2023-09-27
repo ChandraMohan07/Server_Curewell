@@ -6,7 +6,7 @@ namespace WebApi_Curewell.DAL
     {
         public bool AddDoctor(Doctor doctor);
         public List<Doctor> GetAllDoctors();
-        public bool DeleteDoctor(Doctor doctor);
+        public bool DeleteDoctor(int id);
         public bool UpdateDoctorDetails(Doctor doctor);
     }
 }

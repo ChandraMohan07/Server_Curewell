@@ -31,5 +31,12 @@ namespace CurewellApi.Controllers
             if (dsList == null) return NotFound();
             return dsList.ToList();
         }
+
+        [HttpPost("AddDoctorSpecialization")]
+        public IActionResult PostDocSpec(DoctorSpecialization spec)
+        {
+            bool res = _helper.AddSpecialization(spec);
+            return Ok(res);
+        }
     }
 }
